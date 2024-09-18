@@ -1,21 +1,16 @@
 <?php 
-
     $email = $password = '';
-
-
     session_start();
-    print_r($_SESSION["res"]);
     if(isset($_SESSION["res"])){
-        header('Location: index.php');
-    }else{
-        header('Location: login.php');
+        header('Location: Dashboard.php');
+        die();
     }
 
 ?>
 <?php include('partial/header.php'); ?>
-
-<div class="form-container">
-        <h2>Add the Rceipe</h2>
+<br> <br>
+<div class="form-container"> 
+        <h2>Login to Your Account</h2>
         <p>
             <?php
                 if(isset($_POST['submit'])){
@@ -30,7 +25,7 @@
                         if(password_verify($password, $res['password'])){
                            session_start();
                            $_SESSION["res"] = 'yes';
-                            header('Location: index.php');
+                            header('Location: Dashboard.php');
                         }else{
                                echo "<div class='danger'>The Password did not match our record</div>";
                         }

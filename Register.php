@@ -1,17 +1,15 @@
 <?php 
     session_start();
-    print_r($_SESSION["res"]);
     if(isset($_SESSION["res"])){
-        header('Location: index.php');
-    }else{
-        header('Location: login.php');
+        header('Location: Dashboard.php');
+        die();
     }
 
 ?>
 <?php include('partial/header.php'); ?>
-
+<br>
 <div class="form-container">
-        <h2>Add the Rceipe</h2>
+        <h2>Register Your Accounts</h2>
         <!-- <p class="danger"> -->
             <?php
             include('config/db_connect.php');
@@ -30,7 +28,7 @@
                      }
                      if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
                         array_push($errors, "Valid email address is required");
-                     }
+                     } 
                      if($password !== $retype_password){
                         array_push($errors, "Password must be the same");
                      }
